@@ -2,122 +2,98 @@ import Service from './services.js';
 
 const service = Service();
 
-const $ = document.querySelector.bind(document);
-
-const TabNavigation = () => {
-  const html = {
-    links: [...$('.tab-links').children],
-    contents: [...$('.tab-content').children],
-    openTab: $('[data-open]'),
-  };
-
-  const hideAllTabContent = () => {
-    html.contents.forEach((section) => {
-      section.style.display = 'none';
-    });
-  };
-
-  const removeAllActiveClass = () => {
-    html.links.forEach((tab) => {
-      tab.classList.remove('active');
-    });
-  };
-
-  const showCurrentTab = (id) => {
-    const tabcontent = $(`#${id}`);
-    tabcontent.style.display = 'block';
-  };
-
-  const selectTab = (event) => {
-    hideAllTabContent();
-    removeAllActiveClass();
-
-    const target = event.currentTarget;
-    showCurrentTab(target.dataset.id);
-
-    target.classList.add('active');
-  };
-
-  const listenForChange = () => {
-    html.links.forEach((tab) => {
-      tab.addEventListener('click', selectTab);
-    });
-  };
-
-  const init = () => {
-    hideAllTabContent();
-    listenForChange();
-
-    html.openTab.click();
-  };
-
-  return {
-    init,
-  };
-};
-
-const LoadData = async () => {
+const MemeElement = async () => {
   const memes = await service.getMemes();
 
-  const createMemeNameElement = (memeName) => {
-    console.log(memeName);
-    const memeNameElement = document.createElement('h2');
-    const memeNameText = document.createTextNode(memeName);
-    memeNameElement.append(memeNameText);
+  const createDivMemeTitleElement = (meme) => {
+    const divTitleElement = document.createElement('div');
+    divTitleElement.classList.add('title');
 
-    return memeNameElement;
+    const linkContributeElement = document.createElement('a');
+    linkContributeElement.classList.add('contribute');
+    linkContributeElement.setAttribute('href', '#');
+
+    const divPictureElement = document.createElement('div');
+    divPictureElement.classList.add('profile-picture');
+
+    const memeImageElement = document.createElement('img');
+    memeImageElement.setAttribute('src', meme.meme);
+    memeImageElement.setAttribute('alt', meme.name);
+
+    const memeNameElement = document.createElement('h5');
+    const memeNameTextElement = document.createTextNode(meme.name);
+    memeNameElement.append(memeNameTextElement);
+
+    const linkWhistElement = document.createElement('a');
+    linkContributeElement.classList.add('add-whist');
+    linkWhistElement.setAttribute('href', '#');
+
+    const iconElement = document.createElement('i');
+    let random = Math.floor(Math.random() * 10) % 2;
+    const classIcon = `fa${random === 1 ? 'r' : 's'}`;
+    iconElement.classList.add(classIcon, 'fa-heart');
+
+    divPictureElement.appendChild(memeImageElement);
+    linkContributeElement.appendChild(divPictureElement);
+    linkContributeElement.appendChild(memeNameElement);
+    linkWhistElement.appendChild(iconElement);
+    divTitleElement.appendChild(linkContributeElement);
+    divTitleElement.appendChild(linkWhistElement);
+
+    return divTitleElement;
   };
 
-  const createTrendsDateElement = (memeDate) => {
-    const trendDateElement = document.createElement('p');
-    const trendDateText = document.createTextNode(memeDate);
-    trendDateElement.append(trendDateText);
+  const creatDivMemeImageElement = (meme) => {
+    const divImageElement = document.createElement('div');
+    divImageElement.classList.add('image');
 
-    return trendDateElement;
-  };
+    const linkElement = document.createElement('a');
+    linkElement.setAttribute('href', '#');
 
-  const createVotesElement = (memeVote) => {
-    const votesElement = document.createElement('p');
-    const votesText = document.createTextNode(memeVote);
-    votesElement.append(votesText);
-
-    return votesElement;
-  };
-
-  const createMemeElement = (memeImg) => {
     const memeElement = document.createElement('img');
-    memeElement.setAttribute('src', memeImg);
-    memeElement.setAttribute('width', '304');
-    memeElement.setAttribute('height', '228');
+    memeElement.setAttribute('src', meme.meme);
+    memeElement.setAttribute('alt', meme.name);
 
-    return memeElement;
+    linkElement.appendChild(memeElement);
+    divImageElement.appendChild(linkElement);
+
+    return divImageElement;
   };
 
-  const makeHtml = () => {
+  const createDivMemeContentElement = () => {
+    const divMemeContentElement = document.createElement('div');
+    divMemeContentElement.classList.add('box-content');
+
+    return divMemeContentElement;
+  };
+
+  const create = () => {
     for (let idx in memes) {
       const meme = memes[idx];
-      const sectionMemeElement = $('section#meme');
-      const memeNameElement = createMemeNameElement(meme.name);
-      const trendDateElement = createVotesElement(meme.trendDate);
-      const votesElement = createVotesElement(meme.vote);
-      const memeElement = createMemeElement(meme.meme);
+      const divMemeContentGalleryElement = document.querySelector('.body-content.gallery');
+      const divMemeContentElement = createDivMemeContentElement();
+      const divImageElement = creatDivMemeImageElement(meme);
+      const divTitleElement = createDivMemeTitleElement(meme);
 
-      sectionMemeElement.appendChild(memeNameElement);
-      sectionMemeElement.appendChild(trendDateElement);
-      sectionMemeElement.appendChild(votesElement);
-      sectionMemeElement.appendChild(memeElement);
+      divMemeContentElement.appendChild(divImageElement);
+      divMemeContentElement.appendChild(divTitleElement);
+      divMemeContentGalleryElement.appendChild(divMemeContentElement);
     }
   };
 
   return {
-    makeHtml,
+    create,
   };
 };
 
 window.addEventListener('load', async () => {
-  const tabNavigation = TabNavigation();
-  tabNavigation.init();
-
-  const loadData = await LoadData();
-  loadData.makeHtml();
+  const memeElement = await MemeElement();
+  memeElement.create();
 });
+
+const getWhistToggle = document.getElementsByClassName('add-whist');
+for (let i = 0; i <= getWhistToggle.length - 1; i++) {
+  getWhistToggle[i].addEventListener('click', () => {
+    getWhistToggle[i].innerHTML = '<i class="fas fa-heart"></i>';
+  });
+}
