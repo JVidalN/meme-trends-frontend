@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <base href="./" />
     <meta name="description" content="Meme Trends" />
     <meta name="keywords" content="HTML, CSS, JavaScript" />
     <meta name="author" content="Jean Vidal" />
@@ -20,18 +21,25 @@
         <img src="./src/images/logo_transp2.png" width="50" height="36" alt="Meme Trends Logo" />
       </div>
       <div class="buttons-page">
-        <div class="home-page-button">
-          <a href="./" class="teste">Páginal inicial</a>
-        </div>
-        <div class="upload-page-button">
-          <a href="./src/views/uploadPage.html" class="teste">Enviar Meme</a>
-        </div>
+        <button class="home-page-button" data-id="home" data-open>
+          Páginal inicial
+        </button>
+        <button class="upload-page-button" data-id="upload">
+          Enviar Meme
+        </button>
+        <button class="donate-page-button" data-id="donate">
+          Page-me um café
+        </button>
       </div>
       <div class="search">
         <input type="text" placeholder="&#xF002; Pesquisar" />
       </div>
     </header>
-    <main class="main-container"></main>
+    <main class="main-container">
+      <div class="home" id="home"></div>
+      <div class="upload-images" id="upload">Upload</div>
+      <div class="donate" id="donate">Donate</div>
+    </main>
     <footer class="page-footer"></footer>
     <script type="module" src="./src/js/main.js"></script>
   </body>
