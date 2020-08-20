@@ -134,10 +134,37 @@ const hideMenuOnScroll = () => {
   };
 };
 
+const isHomePage = () => {
+  const pathname = window.location.pathname;
+  return pathname === '/frontend/index.html' || pathname === '/frontend/';
+};
+
+const applyCssInHome = () => {
+  const homeButton = document.querySelector('.home-page-button');
+  const linkHomeButton = document.querySelector('.home-page-button a');
+  const uploadButton = document.querySelector('.upload-page-button');
+  const linkuploadButton = document.querySelector('.upload-page-button a');
+
+  if (isHomePage()) {
+    homeButton.style.backgroundColor = 'black';
+    linkHomeButton.style.color = 'white';
+    uploadButton.style.backgroundColor = '#8a7ddc';
+    linkuploadButton.style.color = 'white';
+  } else {
+    homeButton.style.backgroundColor = '#8a7ddc';
+    linkHomeButton.style.color = 'white';
+    uploadButton.style.backgroundColor = 'black';
+    linkuploadButton.style.color = 'white';
+  }
+};
+
 window.addEventListener('load', async () => {
-  const mainElement = await Main();
+  if (isHomePage()) {
+    const mainElement = await Main();
+    mainElement.create();
+  }
   const footerElement = await Footer();
-  mainElement.create();
   footerElement.create();
   hideMenuOnScroll();
+  applyCssInHome();
 });
