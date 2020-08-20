@@ -7,6 +7,7 @@ body {
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 .page-header {
@@ -24,7 +25,8 @@ a {
   margin: 1rem;
 }
 
-.home-page-button {  
+.home-page-button {    
+  background-color: #8A7DDC;
   align-self: center;
   border-radius: 5em;
   padding: 1em 1.5em;
@@ -33,11 +35,12 @@ a {
 }
 
 .home-page-button:hover {  
-  background-color: #EFEFEF;
+  background-color: #776cc0;
+  /* background-color: #EFEFEF; */
 }
 
 .home-page-button a {  
-  color: black;
+  color: white;
 }
 
 .search {  
@@ -71,9 +74,14 @@ a {
 }
 
 .page-footer {
-  background-color: red;
-  grid-area: footer;
+  grid-area: footer;  
 }
+
+.social-media img {
+  padding: 0 10px;
+}
+
+
 
 .container {
   display: grid;
@@ -91,6 +99,8 @@ a {
 }
 
 .main-container {
+  justify-self: center;
+
   line-height: 0;
   -webkit-column-count: 5;
   -webkit-column-gap: 0px;
@@ -105,6 +115,9 @@ a {
   border-radius: 4vh;
   margin: 0 5px 40px;
   width: 236px;
+  /* -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.21);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2); */
 }
 
 .images img {
