@@ -65,6 +65,9 @@ const Footer = () => {
     const divElement = document.createElement('div');
     divElement.classList.add('social-media');
 
+    const textSocialElement = document.createTextNode('Connect with me: ');
+    divElement.append(textSocialElement);
+
     const myRegexp = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n.?]+)/gim;
 
     for (let indexUrl in socialMediaUrls) {
@@ -95,22 +98,39 @@ const Footer = () => {
     divElement.classList.add('copyright');
 
     const textFooterElement = document.createTextNode(
-      `Copyright © ${new Date().getFullYear()} | Jean Vidal`
+      `Copyright © ${new Date().getFullYear()} - Jean Vidal`
     );
 
     divElement.append(textFooterElement);
 
     return divElement;
   };
+
   const create = () => {
     const footerElement = document.querySelector('.page-footer');
     const textFooterElement = copyright();
     const socialMediaElement = socialMedia();
-    footerElement.appendChild(socialMediaElement);
     footerElement.appendChild(textFooterElement);
+    footerElement.appendChild(socialMediaElement);
   };
+
   return {
     create,
+  };
+};
+
+const hideMenuOnScroll = () => {
+  let prevScrollpos = window.pageYOffset;
+  window.onscroll = function () {
+    const currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+      document.getElementsByTagName('header')[0].style.top = '0';
+      document.getElementsByTagName('footer')[0].style.bottom = '0';
+    } else {
+      document.getElementsByTagName('header')[0].style.top = '-80px';
+      document.getElementsByTagName('footer')[0].style.bottom = '-80px';
+    }
+    prevScrollpos = currentScrollPos;
   };
 };
 
@@ -119,4 +139,5 @@ window.addEventListener('load', async () => {
   const footerElement = await Footer();
   mainElement.create();
   footerElement.create();
+  hideMenuOnScroll();
 });
