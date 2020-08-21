@@ -1,4 +1,4 @@
-import Service from './services.js';
+import Service from '../services.js';
 const service = Service();
 
 const Home = async () => {

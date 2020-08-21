@@ -1,6 +1,7 @@
 import TabNavigation from './navigate.js';
+import Header from './header.js';
 import Footer from './footer.js';
-import Home from './home.js';
+import Home from './pages/homePage.js';
 
 const hideMenuOnScroll = () => {
   let prevScrollpos = window.pageYOffset;
@@ -18,13 +19,16 @@ const hideMenuOnScroll = () => {
 };
 
 window.addEventListener('load', async () => {
-  const tabNavigation = TabNavigation();
+  const headerElement = Header();
   const homeElement = await Home();
-  const footerElement = await Footer();
+  const footerElement = Footer();
 
+  headerElement.create();
   homeElement.create();
-  tabNavigation.init();
   footerElement.create();
+
+  const tabNavigation = TabNavigation();
+  tabNavigation.init();
 
   hideMenuOnScroll();
 });
