@@ -118,7 +118,7 @@ button:active:focus {
 }
 
 .home {
-  justify-self: center;
+  width: 100vw;
   line-height: 0;
   -webkit-column-count: 5;
   -webkit-column-gap: 0px;
@@ -133,9 +133,9 @@ button:active:focus {
   border-radius: 2.5vh;
   margin: 0 7px 40px;
   width: 236px;
-  /* -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.21);
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.21);
   -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2); */
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
 }
 
 .images img {
@@ -196,13 +196,19 @@ button:active:focus {
     column-count: 3;
   }
 }
+
 @media (max-width: 800px) {
   .home {
     -moz-column-count: 2;
     -webkit-column-count: 2;
     column-count: 2;
   }
+
+  .buttons-page span {
+    display: none;
+  }
 }
+
 @media (max-width: 570px) {
   .home {
     -moz-column-count: 1;

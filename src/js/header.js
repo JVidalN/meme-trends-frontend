@@ -27,10 +27,12 @@ const Header = () => {
     iconHomeElement.classList.add('fa', 'fa-home');
     iconHomeElement.setAttribute('aria-hidden', 'true');
 
+    const spanTextHomeElement = document.createElement('span');
     const textHomeElement = document.createTextNode(' Página inicial');
+    spanTextHomeElement.append(textHomeElement);
 
     buttonHomeElement.appendChild(iconHomeElement);
-    buttonHomeElement.append(textHomeElement);
+    buttonHomeElement.appendChild(spanTextHomeElement);
 
     const buttonUploadElement = document.createElement('button');
     buttonUploadElement.classList.add('upload-page-button');
@@ -40,10 +42,12 @@ const Header = () => {
     iconUploadElement.classList.add('fa', 'fa-upload');
     iconUploadElement.setAttribute('aria-hidden', 'true');
 
+    const spanTextUploadElement = document.createElement('span');
     const textUploadElement = document.createTextNode(' Enviar meme');
+    spanTextUploadElement.append(textUploadElement);
 
     buttonUploadElement.appendChild(iconUploadElement);
-    buttonUploadElement.append(textUploadElement);
+    buttonUploadElement.append(spanTextUploadElement);
 
     const buttonDonateElement = document.createElement('button');
     buttonDonateElement.classList.add('donate-page-button');
@@ -53,10 +57,12 @@ const Header = () => {
     iconDonateElement.classList.add('fa', 'fa-coffee');
     iconDonateElement.setAttribute('aria-hidden', 'true');
 
+    const spanTextDonateElement = document.createElement('span');
     const textDonateElement = document.createTextNode(' Me paga um café?');
+    spanTextDonateElement.append(textDonateElement);
 
     buttonDonateElement.appendChild(iconDonateElement);
-    buttonDonateElement.append(textDonateElement);
+    buttonDonateElement.append(spanTextDonateElement);
 
     divElement.append(buttonHomeElement);
     divElement.append(buttonUploadElement);
