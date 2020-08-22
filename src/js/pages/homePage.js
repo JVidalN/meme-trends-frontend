@@ -12,6 +12,11 @@ const Home = async () => {
     memeElement.setAttribute('src', meme.meme);
     memeElement.setAttribute('alt', meme.name);
 
+    // const iconOptionsElement = document.createElement('i');
+    // iconOptionsElement.classList.add('fa', 'fa-ellipsis-h');
+    // iconOptionsElement.setAttribute('aria-hidden', 'true');
+
+    // divImageElement.appendChild(iconOptionsElement);
     divImageElement.appendChild(memeElement);
 
     return divImageElement;
