@@ -1,23 +1,25 @@
 const service = () => {
-  const hostname = 'http://localhost';
-  const port = '3003';
-  const host = `${hostname}:${port}/api`;
+  // const hostname = 'http://localhost';
+  // const port = '3003';
+  // const host = `${hostname}:${port}/api`;
+  const hostname = 'https://meme-trends-backend.herokuapp.com';
+  const host = `${hostname}/api`;
 
   const promise = async (method, url, data) => {
-    if (method === 'GET') {
-      var requestOptions = {
-        method: 'GET',
-      };
-    } else if (method === 'POST') {
+    if (data) {
       var myHeaders = new Headers();
       myHeaders.append('Content-Type', 'application/json');
 
       var raw = JSON.stringify(data);
 
       var requestOptions = {
-        method: 'POST',
+        method: method,
         headers: myHeaders,
         body: raw,
+      };
+    } else {
+      var requestOptions = {
+        method: method,
       };
     }
 
@@ -27,10 +29,16 @@ const service = () => {
       .catch((error) => console.log('error', error));
   };
 
-  const getMemes = async () => {
+  const getMemes = async (data) => {
     const url = `${host}/memeTrend`;
 
-    return await promise('GET', url);
+    if (data) {
+      let retur = await promise('GET', url, data);
+      console.log('services:', data);
+      return retur;
+    } else {
+      return await promise('GET', url);
+    }
   };
 
   const postMeme = async (data) => {

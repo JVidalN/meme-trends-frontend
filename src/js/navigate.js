@@ -31,6 +31,15 @@ const TabNavigation = () => {
     showCurrentTab(target.dataset.id);
 
     target.classList.add('active');
+    changeUrlHistory(target.dataset.id);
+  };
+
+  const changeUrlHistory = (tabActived) => {
+    if ('undefined' !== typeof window.history.pushState) {
+      window.history.pushState('', '', `/#${tabActived}`);
+    } else {
+      window.location.hash = tabActived;
+    }
   };
 
   const listenForChange = () => {

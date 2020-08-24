@@ -1,8 +1,9 @@
-import TabNavigation from './navigate.js';
-import Header from './header.js';
-import Footer from './footer.js';
-import Home from './pages/homePage.js';
-import Donate from './pages/donatePage.js';
+import TabNavigation from './js/navigate.js';
+import Header from './js/header.js';
+import Footer from './js/footer.js';
+import Home from './js/views/homePage.js';
+import Upload from './js/views/uploadPage.js';
+import Donate from './js/views/donatePage.js';
 
 const hideMenuOnScroll = () => {
   let prevScrollpos = window.pageYOffset;
@@ -22,11 +23,13 @@ const hideMenuOnScroll = () => {
 window.addEventListener('load', async () => {
   const headerElement = Header();
   const homeElement = await Home();
+  const uploadElement = await Upload();
   const donateElement = await Donate();
   const footerElement = Footer();
 
   headerElement.create();
   homeElement.create();
+  uploadElement.create();
   donateElement.create();
   footerElement.create();
 

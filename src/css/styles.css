@@ -1,13 +1,23 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:700);
 
-html,
-body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
   font-family: 'Roboto', sans-serif;
+  height: 100%;
   font-weight: 700;
   text-align: center;
+}
+
+body {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
 }
 
 :root {
@@ -18,7 +28,13 @@ body {
   --button: #8a7ddc;
   --button-hover: #776cc0;
   --button-active: rgb(41, 39, 39);
+  --primary-color: #8a7ddc;
+  --bg-color: #130f0d;
+  --text-color: rgb(41, 39, 39);
+  --light-color: black;
 }
+
+/* HEADER */
 
 .page-header {
   position: fixed;
@@ -31,19 +47,6 @@ body {
   align-content: center;
   background-color: var(--background);
   transition: top 0.3s;
-}
-
-.page-footer {
-  font-family: 'Roboto', sans-serif;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-around;
-  background-color: var(--background);
-  transition: bottom 0.3s;
 }
 
 .logo {
@@ -67,14 +70,11 @@ body {
   cursor: pointer;
   transition: 300ms all;
   margin: 5px;
+  color: white;
 }
 
 .buttons-page button:hover {
   background-color: var(--button-hover);
-}
-
-.buttons-page button {
-  color: white;
 }
 
 .buttons-page button.active {
@@ -109,16 +109,21 @@ button:active:focus {
   border: 4px solid var(--input-focus);
 }
 
-.social-media img {
-  padding: 0 10px;
-}
+/* HEADER */
+
+/* MAIN */
 
 .main-container {
+  width: 100%;
+  height: auto;
   display: flex;
 }
 
+/** HOME **/
+
 .home {
   width: 100vw;
+  margin: 80px 30px;
   line-height: 0;
   -webkit-column-count: 5;
   -webkit-column-gap: 0px;
@@ -126,7 +131,6 @@ button:active:focus {
   -moz-column-gap: 0px;
   column-count: 5;
   column-gap: 0px;
-  margin: 80px 30px;
 }
 
 .images {
@@ -145,11 +149,109 @@ button:active:focus {
   cursor: pointer;
 }
 
+/** HOME **/
+
+/** UPLOAD **/
+
 .upload-images {
   margin: 80px;
   width: 100%;
   height: auto;
+  background-color: var(--input);
+  color: var(--text-color);
+  border-radius: 2rem;
 }
+
+.upload-images form {
+  background: var(--input);
+
+  width: 100%;
+  max-width: 500px;
+
+  margin: 32px auto;
+  padding: 32px 64px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-images div.input {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.upload-images input,
+.upload-images button {
+  /* reset appeareance */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  /* box */
+  width: 100%;
+
+  padding: 16px 0;
+
+  border: none;
+  border-bottom: 1px solid var(--primary-color);
+
+  background-color: transparent;
+
+  outline: none;
+
+  /* text */
+  color: var(--text-color);
+  font-size: 1em;
+}
+
+.upload-images button {
+  margin-top: 16px;
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background-color: var(--button);
+  align-self: center;
+  border-radius: 5em;
+  padding: 1em 1.5em;
+  cursor: pointer;
+  transition: 300ms all;
+  color: white;
+}
+
+.upload-images .input {
+  text-align: left;
+}
+.upload-images input ~ label {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  color: var(--text-color);
+  transition: 0.4s;
+}
+
+.upload-images input:focus ~ label,
+.upload-images input:valid ~ label {
+  transform: translateY(-24px);
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
+}
+
+.upload-images .input span.error {
+  display: flex;
+  padding: 0;
+  border-radius: 0.5em;
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.upload-images .input span.error.active {
+  border: 1px solid red;
+  padding: 0.4em;
+}
+
+/** UPLOAD **/
+
+/** DONATE **/
 
 .donate {
   margin-top: 10rem;
@@ -160,6 +262,32 @@ button:active:focus {
 .donate-qr-code {
   padding: 30px;
 }
+
+/** DONATE **/
+
+/* MAIN */
+
+/* FOOTER */
+
+.page-footer {
+  font-family: 'Roboto', sans-serif;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  background-color: var(--background);
+  transition: bottom 0.3s;
+}
+
+.social-media img {
+  padding: 0 10px;
+  box-sizing: content-box;
+}
+
+/* FOOTER */
 
 @media (min-width: 1800px) {
   .home {
@@ -202,22 +330,21 @@ button:active:focus {
 }
 
 @media (max-width: 800px) {
+  .buttons-page span {
+    display: none;
+  }
+
   .home {
     -moz-column-count: 2;
     -webkit-column-count: 2;
     column-count: 2;
   }
-
-  .buttons-page span {
-    display: none;
-  }
 }
 
 @media (max-width: 570px) {
-  .home {
-    -moz-column-count: 1;
-    -webkit-column-count: 1;
-    column-count: 1;
+  .logo,
+  .buttons-page {
+    display: none;
   }
 
   .page-header {
@@ -225,12 +352,13 @@ button:active:focus {
     align-items: center;
   }
 
-  .page-footer {
-    height: 75px;
+  .home {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
   }
 
-  .logo,
-  .buttons-page {
-    display: none;
+  .page-footer {
+    height: 75px;
   }
 }

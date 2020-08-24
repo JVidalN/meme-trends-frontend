@@ -1,3 +1,6 @@
+import Service from './services.js';
+const service = Service();
+
 const Header = () => {
   const logo = () => {
     const divElement = document.createElement('div');
@@ -78,10 +81,21 @@ const Header = () => {
     const inputElement = document.createElement('input');
     inputElement.setAttribute('type', 'text');
     inputElement.setAttribute('placeholder', '\uf002 Pesquisar');
+    addEventSearch(inputElement);
 
     divElement.append(inputElement);
 
     return divElement;
+  };
+
+  const addEventSearch = (element) => {
+    element.addEventListener('keyup', async () => {
+      let memeFiltered = {
+        name: element.value,
+      };
+      // const memes = await service.getMemes(memeFiltered);
+      // console.log(memes);
+    });
   };
 
   const create = () => {

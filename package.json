@@ -1,0 +1,20 @@
+{
+  "name": "meme-trends-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JVidalN/meme-trends-frontend.git"
+  },
+  "author": "Jean Vidal <j.vidalnunes@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JVidalN/meme-trends-frontend/issues"
+  },
+  "homepage": "https://github.com/JVidalN/meme-trends-frontend#readme",
+  "devDependencies": {}
+}
