@@ -12,12 +12,12 @@ const Home = async () => {
     memeElement.setAttribute('src', meme.meme);
     memeElement.setAttribute('alt', meme.name);
 
-    // const iconOptionsElement = document.createElement('i');
-    // iconOptionsElement.classList.add('fa', 'fa-ellipsis-h');
-    // iconOptionsElement.setAttribute('aria-hidden', 'true');
+    const iconOptionsElement = document.createElement('span');
+    iconOptionsElement.classList.add('fa', 'fa-ellipsis-h');
+    iconOptionsElement.setAttribute('aria-hidden', 'true');
 
-    // divImageElement.appendChild(iconOptionsElement);
     divImageElement.appendChild(memeElement);
+    divImageElement.appendChild(iconOptionsElement);
 
     return divImageElement;
   };
@@ -29,6 +29,13 @@ const Home = async () => {
       const DivImageElement = createDivMemeImageElement(meme);
 
       divHomeElement.appendChild(DivImageElement);
+    }
+
+    const ListIconOptionsElement = document.querySelectorAll('.images .fa-ellipsis-h');
+    for (let iconOptionsElement of ListIconOptionsElement) {
+      iconOptionsElement.addEventListener('click', (evt) => {
+        console.log(evt);
+      });
     }
   };
 

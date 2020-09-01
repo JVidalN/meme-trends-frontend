@@ -1,4 +1,5 @@
 import Service from './services.js';
+import Logo from '../images/logo_transp2.png';
 const service = Service();
 
 const Header = () => {
@@ -7,7 +8,7 @@ const Header = () => {
     divElement.classList.add('logo');
 
     const imgElement = document.createElement('img');
-    imgElement.setAttribute('src', './src/images/logo_transp2.png');
+    imgElement.setAttribute('src', Logo);
     imgElement.setAttribute('width', '45');
     imgElement.setAttribute('height', '31');
     imgElement.setAttribute('alt', 'Meme Trends Logo');

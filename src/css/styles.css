@@ -47,6 +47,7 @@ body {
   align-content: center;
   background-color: var(--background);
   transition: top 0.3s;
+  z-index: 999;
 }
 
 .logo {
@@ -140,13 +141,38 @@ button:active:focus {
   -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.21);
   -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 .images img {
   border-radius: 2.5vh;
   width: 100% !important;
   height: auto !important;
+  cursor: zoom-in;
+}
+
+.images img:hover {
+  opacity: 0.5;
+}
+
+.images img:hover + span.fa-ellipsis-h,
+span.fa-ellipsis-h:hover {
+  visibility: visible;
+}
+
+span.fa-ellipsis-h {
+  visibility: hidden;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: var(--button-hover);
+  border-radius: 5em;
+  padding: 0.5em 0.6em;
   cursor: pointer;
+  color: white;
+}
+span.fa-ellipsis-h:hover {
+  background-color: var(--button);
 }
 
 /** HOME **/
@@ -164,13 +190,10 @@ button:active:focus {
 
 .upload-images form {
   background: var(--input);
-
   width: 100%;
   max-width: 500px;
-
   margin: 32px auto;
   padding: 32px 64px;
-
   display: flex;
   flex-direction: column;
 }
@@ -182,24 +205,15 @@ button:active:focus {
 
 .upload-images input,
 .upload-images button {
-  /* reset appeareance */
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-
-  /* box */
   width: 100%;
-
   padding: 16px 0;
-
   border: none;
   border-bottom: 1px solid var(--primary-color);
-
   background-color: transparent;
-
   outline: none;
-
-  /* text */
   color: var(--text-color);
   font-size: 1em;
 }
@@ -280,6 +294,7 @@ button:active:focus {
   justify-content: space-around;
   background-color: var(--background);
   transition: bottom 0.3s;
+  z-index: 999;
 }
 
 .social-media img {

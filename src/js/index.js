@@ -1,9 +1,13 @@
-import TabNavigation from './js/navigate.js';
-import Header from './js/header.js';
-import Footer from './js/footer.js';
-import Home from './js/views/homePage.js';
-import Upload from './js/views/uploadPage.js';
-import Donate from './js/views/donatePage.js';
+import TabNavigation from './navigate.js';
+import Header from './header.js';
+import Footer from './footer.js';
+import Home from './views/homePage.js';
+import Upload from './views/uploadPage.js';
+import Donate from './views/donatePage.js';
+
+import Ico from '../images/favicon.ico';
+
+import '../css/styles.css';
 
 const hideMenuOnScroll = () => {
   let prevScrollpos = window.pageYOffset;
@@ -20,13 +24,24 @@ const hideMenuOnScroll = () => {
   };
 };
 
+const createIco = () => {
+  const iconElement = document.createElement('link');
+  iconElement.setAttribute('rel', 'icon');
+  iconElement.setAttribute('type', 'image/x-icon');
+  iconElement.setAttribute('href', Ico);
+
+  return iconElement;
+};
+
 window.addEventListener('load', async () => {
+  const iconElement = createIco();
   const headerElement = Header();
   const homeElement = await Home();
   const uploadElement = await Upload();
   const donateElement = await Donate();
   const footerElement = Footer();
 
+  document.head.appendChild(iconElement);
   headerElement.create();
   homeElement.create();
   uploadElement.create();

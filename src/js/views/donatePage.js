@@ -1,3 +1,5 @@
+import QRCode from '../../images/QRCode.png';
+
 const Donate = async () => {
   const createPaypalDonate = () => {
     const formElement = document.createElement('form');
@@ -71,7 +73,7 @@ const Donate = async () => {
     divQrCodeElement.classList.add('donate-qr-code');
 
     const imgElement = document.createElement('img');
-    imgElement.setAttribute('src', './src/images/QRCode.png');
+    imgElement.setAttribute('src', QRCode);
     imgElement.setAttribute('alt', 'QR Code Donate');
 
     divQrCodeElement.appendChild(imgElement);
