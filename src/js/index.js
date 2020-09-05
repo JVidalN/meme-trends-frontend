@@ -44,7 +44,7 @@ window.addEventListener('load', async () => {
   document.head.appendChild(iconElement);
   headerElement.create();
   homeElement.create();
-  // uploadElement.create();
+  uploadElement.create();
   donateElement.create();
   footerElement.create();
 
