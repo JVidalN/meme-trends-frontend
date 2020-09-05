@@ -37,14 +37,12 @@ window.addEventListener('load', async () => {
   const iconElement = createIco();
   const headerElement = Header();
   const homeElement = await Home();
-  const uploadElement = await Upload();
   const donateElement = await Donate();
   const footerElement = Footer();
 
   document.head.appendChild(iconElement);
   headerElement.create();
   homeElement.create();
-  uploadElement.create();
   donateElement.create();
   footerElement.create();
 

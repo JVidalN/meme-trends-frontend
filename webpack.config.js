@@ -1,6 +1,7 @@
 const Path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   entry: './src/js/index.js',
@@ -30,6 +31,9 @@ module.exports = {
         options: { name: '[name].[ext]', outputPath: 'images' },
       },
     ],
+  },
+  optimization: {
+    minimizer: [new OptimizeCSSAssetsPlugin({})],
   },
   plugins: [
     new HtmlWebPackPlugin({
