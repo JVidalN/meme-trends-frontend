@@ -4,8 +4,8 @@
   "description": "",
   "private": "true",
   "scripts": {
-    "build": "webpack",
-    "serve": "webpack-dev-server"
+    "build": "webpack --config webpack.config.js",
+    "server": "webpack-dev-server --config webpack.config.js --open"
   },
   "repository": {
     "type": "git",

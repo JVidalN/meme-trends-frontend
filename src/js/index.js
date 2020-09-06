@@ -2,7 +2,6 @@ import TabNavigation from './navigate.js';
 import Header from './header.js';
 import Footer from './footer.js';
 import Home from './views/homePage.js';
-import Upload from './views/uploadPage.js';
 import Donate from './views/donatePage.js';
 
 import Ico from '../images/favicon.ico';

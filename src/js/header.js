@@ -38,21 +38,6 @@ const Header = () => {
     buttonHomeElement.appendChild(iconHomeElement);
     buttonHomeElement.appendChild(spanTextHomeElement);
 
-    const buttonUploadElement = document.createElement('button');
-    buttonUploadElement.classList.add('upload-page-button');
-    buttonUploadElement.setAttribute('data-id', 'upload');
-
-    const iconUploadElement = document.createElement('i');
-    iconUploadElement.classList.add('fa', 'fa-upload');
-    iconUploadElement.setAttribute('aria-hidden', 'true');
-
-    const spanTextUploadElement = document.createElement('span');
-    const textUploadElement = document.createTextNode(' Enviar meme');
-    spanTextUploadElement.append(textUploadElement);
-
-    buttonUploadElement.appendChild(iconUploadElement);
-    buttonUploadElement.append(spanTextUploadElement);
-
     const buttonDonateElement = document.createElement('button');
     buttonDonateElement.classList.add('donate-page-button');
     buttonDonateElement.setAttribute('data-id', 'donate');
@@ -69,7 +54,6 @@ const Header = () => {
     buttonDonateElement.append(spanTextDonateElement);
 
     divElement.append(buttonHomeElement);
-    divElement.append(buttonUploadElement);
     divElement.append(buttonDonateElement);
 
     return divElement;
@@ -82,21 +66,10 @@ const Header = () => {
     const inputElement = document.createElement('input');
     inputElement.setAttribute('type', 'text');
     inputElement.setAttribute('placeholder', '\uf002 Pesquisar');
-    addEventSearch(inputElement);
 
     divElement.append(inputElement);
 
     return divElement;
-  };
-
-  const addEventSearch = (element) => {
-    element.addEventListener('keyup', async () => {
-      let memeFiltered = {
-        name: element.value,
-      };
-      // const memes = await service.getMemes(memeFiltered);
-      // console.log(memes);
-    });
   };
 
   const create = () => {

@@ -138,9 +138,6 @@ button:active:focus {
   border-radius: 2.5vh;
   margin: 0 7px 40px;
   width: 236px;
-  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.21);
-  -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
   position: relative;
 }
 
@@ -151,119 +148,7 @@ button:active:focus {
   cursor: zoom-in;
 }
 
-.images img:hover {
-  opacity: 0.5;
-}
-
-.images img:hover + span.fa-ellipsis-h,
-span.fa-ellipsis-h:hover {
-  visibility: visible;
-}
-
-span.fa-ellipsis-h {
-  visibility: hidden;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background-color: var(--button-hover);
-  border-radius: 5em;
-  padding: 0.5em 0.6em;
-  cursor: pointer;
-  color: white;
-}
-span.fa-ellipsis-h:hover {
-  background-color: var(--button);
-}
-
 /** HOME **/
-
-/** UPLOAD **/
-
-.upload-images {
-  margin: 80px;
-  width: 100%;
-  height: auto;
-  background-color: var(--input);
-  color: var(--text-color);
-  border-radius: 2rem;
-}
-
-.upload-images form {
-  background: var(--input);
-  width: 100%;
-  max-width: 500px;
-  margin: 32px auto;
-  padding: 32px 64px;
-  display: flex;
-  flex-direction: column;
-}
-
-.upload-images div.input {
-  margin-bottom: 24px;
-  position: relative;
-}
-
-.upload-images input,
-.upload-images button {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  padding: 16px 0;
-  border: none;
-  border-bottom: 1px solid var(--primary-color);
-  background-color: transparent;
-  outline: none;
-  color: var(--text-color);
-  font-size: 1em;
-}
-
-.upload-images button {
-  margin-top: 16px;
-  font-family: 'Roboto', sans-serif;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  background-color: var(--button);
-  align-self: center;
-  border-radius: 5em;
-  padding: 1em 1.5em;
-  cursor: pointer;
-  transition: 300ms all;
-  color: white;
-}
-
-.upload-images .input {
-  text-align: left;
-}
-.upload-images input ~ label {
-  position: absolute;
-  top: 16px;
-  left: 0;
-  color: var(--text-color);
-  transition: 0.4s;
-}
-
-.upload-images input:focus ~ label,
-.upload-images input:valid ~ label {
-  transform: translateY(-24px);
-  font-size: 0.8em;
-  letter-spacing: 0.1em;
-}
-
-.upload-images .input span.error {
-  display: flex;
-  padding: 0;
-  border-radius: 0.5em;
-  background-color: rgba(255, 0, 0, 0.2);
-}
-
-.upload-images .input span.error.active {
-  border: 1px solid red;
-  padding: 0.4em;
-}
-
-/** UPLOAD **/
 
 /** DONATE **/
 
