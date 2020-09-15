@@ -1,5 +1,6 @@
 import Service from './services.js';
 import Logo from '../images/logo_transp2.png';
+import Home from './views/homePage.js';
 const service = Service();
 
 const Header = () => {
@@ -66,10 +67,22 @@ const Header = () => {
     const inputElement = document.createElement('input');
     inputElement.setAttribute('type', 'text');
     inputElement.setAttribute('placeholder', '\uf002 Pesquisar');
+    addEventSearch(inputElement);
 
     divElement.append(inputElement);
 
     return divElement;
+  };
+
+  const addEventSearch = (element) => {
+    const homeElement = Home();
+    element.addEventListener('keyup', async () => {
+      let termFiltered = element.value;
+      console.log(termFiltered);
+      const memes = await service.getMemes(termFiltered);
+
+      homeElement.create(memes);
+    });
   };
 
   const create = () => {

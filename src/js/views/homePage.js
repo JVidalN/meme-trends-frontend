@@ -1,9 +1,4 @@
-import Service from '../services.js';
-const service = Service();
-
-const Home = async () => {
-  const memes = await service.getMemes();
-
+const Home = () => {
   const createDivMemeImageElement = (meme) => {
     const divImageElement = document.createElement('div');
     divImageElement.classList.add('images');
@@ -17,13 +12,21 @@ const Home = async () => {
     return divImageElement;
   };
 
-  const create = () => {
+  const clearDivMemeImageElement = () => {
+    if (document.querySelectorAll('div.images')) {
+      document.querySelectorAll('div.images').forEach((imageElement) => {
+        imageElement.remove();
+      });
+    }
+  };
+
+  const create = (memes) => {
+    clearDivMemeImageElement();
     for (let idx in memes) {
       const meme = memes[idx];
       const divHomeElement = document.querySelector('.main-container .home');
       const DivImageElement = createDivMemeImageElement(meme);
 
-      divHomeElement.appendChild(DivImageElement);
       divHomeElement.appendChild(DivImageElement);
     }
   };

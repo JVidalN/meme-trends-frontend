@@ -3,6 +3,8 @@ import Header from './header.js';
 import Footer from './footer.js';
 import Home from './views/homePage.js';
 import Donate from './views/donatePage.js';
+import Service from './services.js';
+const service = Service();
 
 import Ico from '../images/favicon.ico';
 
@@ -35,13 +37,16 @@ const createIco = () => {
 window.addEventListener('load', async () => {
   const iconElement = createIco();
   const headerElement = Header();
-  const homeElement = await Home();
+  const homeElement = Home();
   const donateElement = await Donate();
   const footerElement = Footer();
 
   document.head.appendChild(iconElement);
   headerElement.create();
-  homeElement.create();
+
+  const memes = await service.getMemes();
+
+  homeElement.create(memes);
   donateElement.create();
   footerElement.create();
 

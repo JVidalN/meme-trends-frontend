@@ -30,26 +30,13 @@ const service = () => {
   };
 
   const getMemes = async (data) => {
-    const url = `${host}/memeTrend`;
+    const url = data ? `${host}/memeTrend?tag__regex=/${data}/i` : `${host}/memeTrend`;
 
-    if (data) {
-      let retur = await promise('GET', url, data);
-      console.log('services:', data);
-      return retur;
-    } else {
-      return await promise('GET', url);
-    }
-  };
-
-  const postMeme = async (data) => {
-    const url = `${host}/memeTrend`;
-
-    return await promise('GET', url, data);
+    return await promise('GET', url);
   };
 
   return {
     getMemes,
-    postMeme,
   };
 };
 
