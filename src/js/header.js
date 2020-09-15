@@ -78,7 +78,6 @@ const Header = () => {
     const homeElement = Home();
     element.addEventListener('keyup', async () => {
       let termFiltered = element.value;
-      console.log(termFiltered);
       const memes = await service.getMemes(termFiltered);
 
       homeElement.create(memes);
